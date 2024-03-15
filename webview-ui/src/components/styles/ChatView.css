@@ -1,0 +1,51 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure the container fills the height of the viewport */
+}
+
+.messages-container {
+  flex: 1; /* Allow messages container to expand to fill remaining space */
+  overflow-y: auto; /* Enable vertical scrolling if messages overflow */
+}
+
+.message {
+  padding: 8px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.message.user {
+  /* No specific background color */
+}
+
+.message.bot {
+  /* No specific background color */
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.input-container button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+}

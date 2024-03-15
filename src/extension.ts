@@ -1,25 +1,24 @@
 import * as vscode from 'vscode';
-import { getWebviewContent } from './webViewContent';
+import { ChatViewProvider } from './provider/chatview.provider';
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Congratulations, your extension "code-whisper" is now active!');
-  let disposable = vscode.commands.registerCommand(
-    'code-whisper.showCodeWhisperChat',
-    () => {
-      const panel = vscode.window.createWebviewPanel(
-        'chatView', 
-        'Chat', 
-        vscode.ViewColumn.One, 
-        {
-          enableScripts: true
+  context.subscriptions.push(
+    vscode.window.registerWebviewViewProvider(
+      'codeWhisperChat.chat',
+      new ChatViewProvider(context.extensionUri),
+      {
+        webviewOptions: {
+          retainContextWhenHidden: true
         }
-      );
-
-      panel.webview.html = getWebviewContent();
-    }
+      }
+    )
   );
 
-  context.subscriptions.push(disposable);
+  context.subscriptions.push(
+    vscode.commands.registerCommand('code-whisper.showCodeWhisperChat', () => {
+      vscode.commands.executeCommand('workbench.view.extension.codeWhisperChat');
+    })
+  );
 }
 
 export function deactivate() {}

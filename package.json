@@ -9,11 +9,12 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onCommand:code-whisper.showCodeWhisperChat"
-  ],
+  "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "capabilities": {
+      "hoverProvider": "true"
+    },
     "viewsContainers": {
       "activitybar": [
           {
@@ -24,18 +25,17 @@
       ]
     },
     "views": {
-        "codeWhisperChat": [
-            {
-                "id": "chatPanel",
-                "name": "Chat Panel"
-            }
-        ]
+      "codeWhisperChat": [
+        {
+          "id": "codeWhisperChat.chat",
+          "type": "webview",
+          "name": "Chat",
+          "icon": "assets/images/chat-icon.svg",
+          "contextualTitle": "Code Whisper"
+        }
+      ]
     },
     "commands": [
-      {
-        "command": "code-whisper.helloWorld",
-        "title": "Hello World"
-      },
       {
         "command": "code-whisper.showCodeWhisperChat",
         "title": "Show Code Whisper Chat"

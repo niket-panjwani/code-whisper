@@ -1,71 +1,42 @@
-# code-whisper README
+# Code Whisper
 
-This is the README for your extension "code-whisper". After writing up a brief description, we recommend including the following sections.
+Code Whisper is a powerful Visual Studio Code extension that integrates a chat interface within the IDE, allowing developers to directly interact with the OpenAI API for assistance with software engineering questions. This innovative tool is designed to enhance productivity and streamline the development process by providing real-time, conversational support for coding queries, problem-solving, and code insights.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Interactive Chat Interface**: Engage in a natural dialogue with the OpenAI API without leaving your development environment.
+- **Instant Assistance**: Get immediate help with software engineering questions, coding problems, and best practices.
+- **Seamless Integration**: Works within Visual Studio Code, ensuring a smooth and efficient workflow.
 
-For example if there is an image subfolder under your extension project workspace:
+## Getting Started
 
-\!\[feature X\]\(images/feature-x.png\)
+To start using Code Whisper, follow these steps:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. Install the extension from the Visual Studio Code Marketplace.
+2. Once installed, open the command palette (`Ctrl+Shift+P` or `Cmd+Shift+P` on Mac) and search for "Show Code Whisper Chat". Select it to open the chat interface.
+3. Type your question in the chat interface to receive help and insights from the OpenAI API.
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Visual Studio Code 1.87.0 or higher.
 
-## Extension Settings
+## Contributing
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-For example:
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
-This extension contributes the following settings:
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## License
 
-## Known Issues
+Distributed under the MIT License. See `LICENSE` for more information.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+## Acknowledgements
 
-## Release Notes
+- Special thanks to Niket Panjwani for contributing to the development of this extension.
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**

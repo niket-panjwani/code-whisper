@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   width: 100%; /* Ensure the custom textbox fills the width */
+  vertical-align: center;
 }
 
 .input-wrapper {
@@ -31,6 +32,6 @@
 }
 
 .input-wrapper button img {
-  width: 100%; /* Make sure the icon fills the button */
-  height: auto;
+  height: 20px; /* Make sure the icon fills the button */
+  width: auto;
 }

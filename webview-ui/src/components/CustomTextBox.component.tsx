@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './styles/CustomTextbox.css';
+import send from '../assets/send-inverted.svg';
 
 interface CustomTextboxProps {
   onMessageSend: (message: string) => void;
@@ -42,7 +43,7 @@ const CustomTextbox: React.FC<CustomTextboxProps> = ({ onMessageSend, isSending,
         />
         <button id="send-button" disabled={isSending} onClick={handleMessageSend}>
           {/* Replace 'your-send-button.svg' with the path to your SVG icon */}
-          <img src="your-send-button.svg" alt="Send" />
+          <img src={send} alt="Send" />
         </button>
       </div>
     </div>

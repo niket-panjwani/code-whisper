@@ -32,9 +32,13 @@
 .input-container input {
   flex: 1;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 2px solid #007bff; /* Border color for the custom textbox */
   border-radius: 5px;
   margin-right: 10px;
+  font-size: 16px; /* Custom font size */
+  background-color: transparent; /* Set background color to transparent */
+  outline: none; /* Remove default input focus outline */
+  color: white; /* Set text color */
 }
 
 .input-container button {
@@ -48,4 +52,11 @@
 
 .input-container button:hover {
   background-color: #0056b3;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #333; /* Dark grey color for the divider line */
+  margin: 5px 0; /* Adjust margin as needed */
+  padding: 0;
 }

@@ -1,0 +1,36 @@
+.custom-textbox {
+  display: flex;
+  align-items: center;
+  width: 100%; /* Ensure the custom textbox fills the width */
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border: 1px solid #ccc; /* Add border style to the wrapper */
+  border-radius: 5px; /* Add border radius */
+}
+
+.input-wrapper input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 10px;
+  flex: 1; /* Allow the input field to expand to fill remaining space */
+  color: white; /* Set the text color */
+}
+
+.input-wrapper button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  width: 50px; /* Adjust width based on your icon size */
+  height: 100%; /* Match the height of the input field */
+}
+
+.input-wrapper button img {
+  width: 100%; /* Make sure the icon fills the button */
+  height: auto;
+}

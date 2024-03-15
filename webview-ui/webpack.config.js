@@ -6,6 +6,11 @@ module.exports = {
     path: path.resolve(__dirname, '../out'), // The output directory
     filename: 'bundle.js', // The name of the output file
   },
+  devServer: {
+    headers: {
+      'Content-Security-Policy': "default-src 'self'; connect-src http://localhost:3000"
+    }
+  },
   module: {
     rules: [
       {

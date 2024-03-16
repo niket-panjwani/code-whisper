@@ -27,7 +27,7 @@ const ChatView: React.FC = () => {
       return [...prevMessages, newMessage];
     });
   
-    const response = await fetch('http://localhost:3000/sendMessage', {
+    const response = await fetch('https://code-whisper-api-949cfdbef458.herokuapp.com/sendMessage', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

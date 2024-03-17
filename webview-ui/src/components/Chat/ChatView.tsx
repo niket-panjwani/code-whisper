@@ -1,14 +1,12 @@
 /* eslint-disable no-loop-func */
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './styles/ChatView.css';
-import CustomTextbox from './CustomTextBox.component';
+import CustomTextbox from '../CustomTextBox/CustomTextBox';
+import { Message } from './Message';
+import { sendMessage } from '../../api/sendMessage';
+import { scrollToBottom } from '../../utils/scrollToBottom';
 import ReactMarkdown from 'react-markdown';
 
-interface Message {
-  id: number;
-  content: string;
-  sender: string;
-}
 
 const ChatView: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -17,7 +15,8 @@ const ChatView: React.FC = () => {
 
   const handleMessageSend = async (messageContent: string) => {
     setIsSending(true);
-  
+
+    // Add user message
     setMessages(prevMessages => {
       const newMessage: Message = {
         id: prevMessages.length + 1,
@@ -26,25 +25,19 @@ const ChatView: React.FC = () => {
       };
       return [...prevMessages, newMessage];
     });
-  
-    const response = await fetch('https://code-whisper-api-949cfdbef458.herokuapp.com/sendMessage', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ content: messageContent }),
-    });
-  
+
+    const response = await sendMessage(messageContent);
+
     if (!response.ok) {
       console.error('API call failed');
       setIsSending(false);
       return;
     }
-  
+
     if (response.body) {
       const reader = response.body.getReader();
       let responseData = '';
-  
+
       setMessages(prevMessages => {
         const botMessage: Message = {
           id: prevMessages.length + 1,
@@ -54,7 +47,7 @@ const ChatView: React.FC = () => {
   
         return [...prevMessages, botMessage];
       });
-  
+
       while (true) {
         const { done, value } = await reader.read();
   
@@ -79,24 +72,18 @@ const ChatView: React.FC = () => {
     } else {
       console.error('Response body is null');
     }
-  
+
     setIsSending(false);
   };
 
-  const scrollToBottom = () => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   useEffect(() => {
-    scrollToBottom();
+    scrollToBottom(messagesEndRef);
   }, [messages]);
 
   return (
     <div className="chat-container">
       <div className="messages-container">
-        {messages.map((message) => (
+        {messages.map(message => (
           <React.Fragment key={message.id}>
             <div className={`message ${message.sender === 'user' ? 'user' : 'bot'}`}>
               <strong>{message.sender}:</strong>
@@ -108,7 +95,7 @@ const ChatView: React.FC = () => {
         <div ref={messagesEndRef} />
       </div>
       <div className="input-container">
-        <CustomTextbox onMessageSend={handleMessageSend} isSending={isSending} setIsSending={setIsSending}/>
+        <CustomTextbox onMessageSend={handleMessageSend} isSending={isSending} />
       </div>
     </div>
   );

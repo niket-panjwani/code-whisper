@@ -2,7 +2,7 @@
   "name": "code-whisper",
   "displayName": "Code Whisper",
   "description": "Code Whisper is an intuitive Visual Studio Code extension that brings the power of an advanced AI coding assistant to your fingertips, ensuring a smooth and unobtrusive coding experience. Inspired by GitHub Copilot Chat, this extension offers a conversational interface where you can engage in natural dialogue to receive intelligent code suggestions, explanations, and guidance, all while maintaining your coding flow. With Code Whisper, you can streamline your development workflow and boost your productivity without disrupting your thought process. Simply describe the functionality you need, and Code Whisper will discreetly whisper relevant code snippets, examples, and insights tailored to your specific context. Whether you're writing new code, refactoring existing code, or troubleshooting issues, Code Whisper is there to assist you subtly, allowing you to stay focused and in the zone.",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "galleryBanner": {
     "color": "#58A6FF",
     "theme": "dark"

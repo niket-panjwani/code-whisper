@@ -35,7 +35,7 @@ export function getWebviewContent(
   <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src ${webview.cspSource} 'unsafe-inline'; style-src 'unsafe-inline'; connect-src http://localhost:3000; img-src vscode-resource:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src ${webview.cspSource} 'unsafe-inline'; style-src 'unsafe-inline'; connect-src http://localhost:3000 https://code-whisper-api-949cfdbef458.herokuapp.com; img-src vscode-resource:;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
   </head>

@@ -4,7 +4,7 @@ import path from 'path';
 export class ChatViewProvider implements vscode.WebviewViewProvider {
   constructor(private readonly _extensionUri: vscode.Uri) {}
 
-  resolveWebviewView(
+  async resolveWebviewView(
     webviewView: vscode.WebviewView,
     context: vscode.WebviewViewResolveContext,
     _token: vscode.CancellationToken
@@ -18,6 +18,11 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
       webviewView.webview,
       this._extensionUri.fsPath
     );
+
+    const session = await vscode.authentication.getSession('github',['read:user'], { createIfNone: true });
+    if (session) {
+      webviewView.webview.postMessage({ username: session.account.label });
+    }
   }
 }
 

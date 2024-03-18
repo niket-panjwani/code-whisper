@@ -14,7 +14,9 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onUri:vscode-extension://ai-dev-tools.code-whisper"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "capabilities": {
@@ -62,6 +64,8 @@
   "devDependencies": {
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/open": "^6.2.1",
+    "@types/opn": "^5.5.0",
     "@types/vscode": "^1.87.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
@@ -74,7 +78,11 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
-    "react-markdown": "^9.0.1"
+    "@types/simple-oauth2": "^5.0.7",
+    "github-auth": "^3.0.2",
+    "opn": "^6.0.0",
+    "react-markdown": "^9.0.1",
+    "simple-oauth2": "^5.0.0"
   },
   "repository": {
     "type": "git",

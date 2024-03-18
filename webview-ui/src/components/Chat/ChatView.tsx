@@ -12,6 +12,7 @@ const ChatView: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [isSending, setIsSending] = useState(false);
+  const [userName, setUsername] = useState('user');
 
   const handleMessageSend = async (messageContent: string) => {
     setIsSending(true);
@@ -77,6 +78,13 @@ const ChatView: React.FC = () => {
   };
 
   useEffect(() => {
+    window.addEventListener('message', event => {
+      const message = event.data;
+      setUsername(message.username);
+    });
+  }, []);
+
+  useEffect(() => {
     scrollToBottom(messagesEndRef);
   }, [messages]);
 
@@ -86,7 +94,7 @@ const ChatView: React.FC = () => {
         {messages.map(message => (
           <React.Fragment key={message.id}>
             <div className={`message ${message.sender === 'user' ? 'user' : 'bot'}`}>
-              <strong>{message.sender}:</strong>
+              <strong>{message.sender === 'user' ? userName : 'Code Whisper'}</strong>
               <ReactMarkdown>{message.content}</ReactMarkdown>
             </div>
             <hr className="divider" />

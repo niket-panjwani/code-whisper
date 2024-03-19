@@ -6,7 +6,8 @@ import { Message } from './Message';
 import { sendMessage } from '../../api/sendMessage';
 import { scrollToBottom } from '../../utils/scrollToBottom';
 import ReactMarkdown from 'react-markdown';
-
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Choose a style
 
 const ChatView: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -31,6 +32,15 @@ const ChatView: React.FC = () => {
 
     if (!response.ok) {
       console.error('API call failed');
+      setMessages(prevMessages => {
+        const botMessage: Message = {
+          id: prevMessages.length + 1,
+          content: '',
+          sender: 'bot',
+        };
+  
+        return [...prevMessages, botMessage];
+      });
       setIsSending(false);
       return;
     }
@@ -71,6 +81,15 @@ const ChatView: React.FC = () => {
         });
       }
     } else {
+      setMessages(prevMessages => {
+        const botMessage: Message = {
+          id: prevMessages.length + 1,
+          content: '',
+          sender: 'bot',
+        };
+  
+        return [...prevMessages, botMessage];
+      });
       console.error('Response body is null');
     }
 
@@ -95,7 +114,27 @@ const ChatView: React.FC = () => {
           <React.Fragment key={message.id}>
             <div className={`message ${message.sender === 'user' ? 'user' : 'bot'}`}>
               <strong>{message.sender === 'user' ? userName : 'Code Whisper'}</strong>
-              <ReactMarkdown>{message.content}</ReactMarkdown>
+              
+              <ReactMarkdown
+                children={message.content || "*Oops, no response was returned.*"}
+                components={{
+                  code({ node, inline, className, children, ...props }: any) {
+                    const match = /language-(\w+)/.exec(className || "");
+                    return !inline && match ? (
+                      <SyntaxHighlighter
+                        {...props}
+                        children={String(children).replace(/\n$/, "")}
+                        style={coldarkDark}
+                        language={match[1]}
+                      />
+                    ) : (
+                      <code {...props} className={`inlineCode ${className}`}>
+                        {children}
+                      </code>
+                    );
+                  },
+                }}
+              />
             </div>
             <hr className="divider" />
           </React.Fragment>

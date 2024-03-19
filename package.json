@@ -2,7 +2,7 @@
   "name": "code-whisper",
   "displayName": "Code Whisper",
   "description": "Code Whisper is a powerful Visual Studio Code extension that integrates a chat interface within the IDE, allowing developers to directly interact with the OpenAI API for assistance with software engineering questions. This innovative tool is designed to enhance productivity and streamline the development process by providing real-time, conversational support for coding queries, problem-solving, and code insights.",
-  "version": "1.1.0",
+  "version": "1.3.0",
   "icon": "assets/images/chat-icon.png",
   "galleryBanner": {
     "color": "#58A6FF",
@@ -25,7 +25,10 @@
       "authentication": [
         {
           "id": "github",
-          "scopes": ["read:user", "user:email"]
+          "scopes": [
+            "read:user",
+            "user:email"
+          ]
         }
       ]
     },
@@ -78,6 +81,7 @@
     "@typescript-eslint/parser": "^7.0.2",
     "@vscode/test-cli": "^0.0.6",
     "@vscode/test-electron": "^2.3.9",
+    "esbuild": "^0.20.2",
     "eslint": "^8.56.0",
     "ts-loader": "^9.5.1",
     "typescript": "^5.4.2",

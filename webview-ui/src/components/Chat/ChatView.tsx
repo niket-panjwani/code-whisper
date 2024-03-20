@@ -28,7 +28,7 @@ const ChatView: React.FC = () => {
       return [...prevMessages, newMessage];
     });
 
-    const response = await sendMessage(messageContent);
+    const response = await sendMessage(messageContent, userName);
 
     if (!response.ok) {
       console.error('API call failed');

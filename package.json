@@ -102,5 +102,8 @@
   "bugs": {
     "url": "https://github.com/niket-panjwani/code-whisper/issues"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "sponsor": {
+    "url": "https://www.buymeacoffee.com/niketpanjwani"
+  }
 }

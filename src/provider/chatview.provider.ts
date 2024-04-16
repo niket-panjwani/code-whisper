@@ -25,11 +25,7 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
       async message => {
         switch (message.command) {
             case 'sendMessage':
-              console.log("Message received:", message.text);
-              terminal.sendText(`echo "${message.text}"`);
-              if(message.text === 'initialize react app') {
-                terminal.sendText(`npx create-react-app my-app`);
-              }
+              terminal.sendText(`${message.text}`);
               terminal.show();
               break;
           }

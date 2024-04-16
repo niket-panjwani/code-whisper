@@ -1,5 +1,5 @@
 export const sendMessage = async (messageContent: string, user_id: string) => {
-  return fetch('https://code-whisper-api-949cfdbef458.herokuapp.com/api/sendMessage', {
+  return fetch('http://localhost:3000/api/sendMessage', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -21,12 +21,6 @@ const ChatView: React.FC = () => {
   const handleMessageSend = async (messageContent: string) => {
     setIsSending(true);
 
-    // Send message to the extension to execute terminal commands
-    // vscode.postMessage({
-    //   command: 'sendMessage',
-    //   text: messageContent
-    // });
-    
     // Add user message
     setMessages(prevMessages => {
       const newMessage: Message = {
@@ -52,6 +46,13 @@ const ChatView: React.FC = () => {
       });
       setIsSending(false);
       return;
+    }
+
+    if(response.headers.get('X-Intent')){
+      vscode.postMessage({
+        command: 'sendMessage',
+        text: response.headers.get('X-Command')
+      });
     }
 
     if (response.body) {

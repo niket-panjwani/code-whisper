@@ -8,16 +8,25 @@ import { scrollToBottom } from '../../utils/scrollToBottom';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism'; // Choose a style
+declare const acquireVsCodeApi: () => any;
+const vscode = acquireVsCodeApi();
 
 const ChatView: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [isSending, setIsSending] = useState(false);
   const [userName, setUsername] = useState('user');
-
+  
+  
   const handleMessageSend = async (messageContent: string) => {
     setIsSending(true);
 
+    // Send message to the extension to execute terminal commands
+    // vscode.postMessage({
+    //   command: 'sendMessage',
+    //   text: messageContent
+    // });
+    
     // Add user message
     setMessages(prevMessages => {
       const newMessage: Message = {

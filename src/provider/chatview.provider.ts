@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import path from 'path';
 
 export class ChatViewProvider implements vscode.WebviewViewProvider {
-  constructor(private readonly _extensionUri: vscode.Uri) {}
+  constructor(private readonly _extensionUri: vscode.Uri, private context: vscode.ExtensionContext) {}
 
   async resolveWebviewView(
     webviewView: vscode.WebviewView,
@@ -18,6 +18,25 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
       webviewView.webview,
       this._extensionUri.fsPath
     );
+
+    // Add terminal and execute commands
+    const terminal = vscode.window.createTerminal();
+    webviewView.webview.onDidReceiveMessage(
+      async message => {
+        switch (message.command) {
+            case 'sendMessage':
+              console.log("Message received:", message.text);
+              terminal.sendText(`echo "${message.text}"`);
+              if(message.text === 'initialize react app') {
+                terminal.sendText(`npx create-react-app my-app`);
+              }
+              terminal.show();
+              break;
+          }
+      },
+      undefined,
+      this.context.subscriptions
+    )
 
     const session = await vscode.authentication.getSession('github',['read:user'], { createIfNone: true });
     if (session) {

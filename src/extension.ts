@@ -22,7 +22,7 @@ function registerChatView(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.window.registerWebviewViewProvider(
       'codeWhisperChat.chat',
-      new ChatViewProvider(context.extensionUri),
+      new ChatViewProvider(context.extensionUri, context),
       {
         webviewOptions: {
           retainContextWhenHidden: true
